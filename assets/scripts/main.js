@@ -20,8 +20,8 @@
 
 		 if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-				// URL = URL + "lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=metric" + "&APPID=" + weatherKey;
-				URL = "/forecast.json";
+				URL = URL + "lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=metric" + "&APPID=" + weatherKey;
+				// URL = "/forecast.json";
 				$.getJSON(URL, function(data){
 					console.log(data);
 
