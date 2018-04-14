@@ -1,6 +1,6 @@
 (function($, root, undefined) {
 	$(function() {
-		var URL = "http://api.openweathermap.org/data/2.5/forecast?";
+		var URL = "https://api.openweathermap.org/data/2.5/forecast?";
 		var weatherKey = "7d2cb52eef63ebafc920925261b46995";
 		var d = new Date(); //get current date and time
 		var n = d.getTime() / 1000 //convert to unix
