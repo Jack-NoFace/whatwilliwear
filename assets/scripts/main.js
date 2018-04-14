@@ -88,6 +88,29 @@
 					averageWindSpeed = (windspeed24hoursJSON[0][0] + windspeed24hoursJSON[1][0] + windspeed24hoursJSON[2][0] + windspeed24hoursJSON[3][0] + windspeed24hoursJSON[4][0] + windspeed24hoursJSON[5][0] + windspeed24hoursJSON[6][0] + windspeed24hoursJSON[7][0]) / 8;
 
 
+					//Set rules for temperature 
+
+					if (averageTemp >= 35) {
+						todaysTemp = "Blazing"
+					} else if (averageTemp >=25 && averageTemp <= 34) {
+						todaysTemp = "Hot"
+					} else if (averageTemp >=18 && averageTemp <= 24) {
+						todaysTemp = "Warm"
+					} else if (averageTemp >= 13 && averageTemp <= 17) {
+						todaysTemp = "Coolish"
+					} else if (averageTemp >=8 && averageTemp <= 12) {
+						todaysTemp = "Cool"
+					} else if (averageTemp >=4 && averageTemp <= 7) {
+						todaysTemp = "Cold"
+					} else if ( averageTemp <= 3) {
+						todaysTemp = "Freezing"
+					} 
+
+					if (todaysTemp = "Coolish") {
+						$("#temp").html("The emperature could be described as coolish outside today. It might be worth taking a jumper witt you!");
+					}
+
+					$(".loader--full").hide();
 
 
 					$("#currentWeather").html("It's looking like we're going to have a " + weatherJSON[0][3] + " today!");
