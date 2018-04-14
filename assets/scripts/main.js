@@ -11,9 +11,11 @@
 		var temp24hoursJSON = [];
 		var humidity24hoursJSON = [];
 		var windspeed24hoursJSON = [];
-		var averageTemp 
-		var averageHumidity 
-		var avergeWindSpeed 
+		var averageTemp; 
+		var averageHumidity; 
+		var avergeWindSpeed; 
+		var todaysTemp;
+		var rain = [];
 		
 
 		 if (navigator.geolocation) {
@@ -36,7 +38,8 @@
 							data.list[i].main.temp,
 							data.list[i].main.humidity,
 							data.list[i].weather[0].description,
-							data.list[i].wind.speed
+							data.list[i].wind.speed,
+							data.list[i].rain[0]
 						];
 					}
 
@@ -49,9 +52,30 @@
 							data.list[i].main.temp,
 							data.list[i].main.humidity,
 							data.list[i].weather[0].description,
-							data.list[i].wind.speed
+							data.list[i].wind.speed,
+							data.list[i].rain[0]
 						];
 					}
+
+					//Is it going to rain 
+
+					i = 0;
+
+					for (i = 0; i < 8; i++) {
+						rain[i] = [
+							data.list[i].rain[0]
+						];
+					}
+
+					if (rain > 0) {
+						rain = true;
+						$("#rain").html("It's going to rain today - take your umbrella and rain coat.");
+					} else {
+						$("#rain").html("Skies are dry, no need for an umbrella.");
+					}
+
+
+
 
 					//Work out average temperature
 					i = 0;
@@ -91,24 +115,30 @@
 					//Set rules for temperature 
 
 					if (averageTemp >= 35) {
-						todaysTemp = "Blazing"
-					} else if (averageTemp >=25 && averageTemp <= 34) {
-						todaysTemp = "Hot"
-					} else if (averageTemp >=18 && averageTemp <= 24) {
-						todaysTemp = "Warm"
+						todaysTemp = "Blazing";
+						$("#temp").html("It is blazing hot out there today. Wear as little as you can get away with, and take the suncream!");
+					} else if (averageTemp >= 25 && averageTemp <= 34) {
+						todaysTemp = "Hot";
+						$("#temp").html("It's going to be pretty hot today. You'll want shorts, t-shirt or a summer dress on!");
+					} else if (averageTemp >= 18 && averageTemp <= 24) {
+						todaysTemp = "Warm";
+						$("#temp").html("It's going to be pretty hot today. You'll want shorts, t-shirt or a summer dress on!");
 					} else if (averageTemp >= 13 && averageTemp <= 17) {
-						todaysTemp = "Coolish"
-					} else if (averageTemp >=8 && averageTemp <= 12) {
-						todaysTemp = "Cool"
-					} else if (averageTemp >=4 && averageTemp <= 7) {
-						todaysTemp = "Cold"
+						todaysTemp = "Coolish";
+						$("#temp").html("The temperature could be described as coolish outside today. It might be worth taking a jumper with you!");
+					} else if (averageTemp >= 8 && averageTemp <= 12) {
+						todaysTemp = "Cool";
+						$("#temp").html("It's not quite cold, and not quite warm. Jeans, shirt and a thickish jumper");
+					} else if (averageTemp >= 4 && averageTemp <= 7) {
+						todaysTemp = "Cold";
+						$("#temp").html("It's cold out there, wear warm clothes today.");
 					} else if ( averageTemp <= 3) {
-						todaysTemp = "Freezing"
+						todaysTemp = "Freezing";
+						$("#temp").html("It's freezing today. Grab your wooly hat, gloves, scarf and thick jumper - or hey just stay inside!");
 					} 
 
-					if (todaysTemp = "Coolish") {
-						$("#temp").html("The emperature could be described as coolish outside today. It might be worth taking a jumper witt you!");
-					}
+					//Set rules for humidity 
+
 
 					$(".loader--full").hide();
 
@@ -125,14 +155,26 @@
 					console.log(weatherJSON);
 					console.log(weather24hoursJSON);
 					console.log(temp24hoursJSON);
+					console.log(humidity24hoursJSON);
 					console.log(averageTemp);
 					console.log(averageHumidity);
 					console.log(averageWindSpeed);
+					console.log(todaysTemp);
 				});
 
 			});
-        } else {
-
 		}
+		
+		if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/serviceworker.js').then(function(registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
 	});
 })(jQuery, this);
