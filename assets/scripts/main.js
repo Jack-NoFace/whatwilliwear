@@ -27,7 +27,7 @@
 
 					//Store the current city
 					currentCity = data.city.name;
-					
+					$("#city").html("Right now you are in " + currentCity + "!");
 					
 					//Store the weather data for the dt nearest to ours onwards
 					var i = 0;
