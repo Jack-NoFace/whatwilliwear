@@ -1,0 +1,23 @@
+{
+	"name": "whatwilliwear.today",
+	"version": "1.0.0",
+	"dependencies": {
+		"yarn": "^1.3.2"
+	},
+	"devDependencies": {
+		"autoprefixer": "^7.2.1",
+		"clean-css-cli": "^4.1.10",
+		"node-sass": "^4.7.2",
+		"nodemon": "^1.12.5",
+		"postcss-cli": "^4.1.1"
+	},
+	"scripts": {
+		"build-css":
+			"node-sass --include-path scss assets/styles/styles.scss   public/css/style.css",
+		"clean-css": "cleancss -o style.min.css   style.css",
+		"prefix-css": "npx postcss public/css/style.css --use autoprefixer -d .",
+		"watch-css":
+			"nodemon -e scss -x \"npm run build-css && npm run prefix-css && npm run clean-css\"",
+		"develop": "start npm run watch-css"
+	}
+}
