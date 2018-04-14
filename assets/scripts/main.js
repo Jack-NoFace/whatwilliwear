@@ -71,7 +71,7 @@
 						rain = true;
 						$("#rain").html("It's going to rain today - take your umbrella and rain coat.");
 					} else {
-						$("#rain").html("Skies are dry, no need for an umbrella.");
+						$("#rain").html("Skies are dry, no need for an umbrella or your coat.");
 					}
 
 
@@ -138,6 +138,10 @@
 					} 
 
 					//Set rules for humidity 
+
+					if (averageHumidity > 85) {
+						$("#humidity").html("You'll want to make sure your're wearing light, cotton or linen clothing - humidity is high today.");
+					}
 
 
 					$(".loader--full").hide();
