@@ -128,7 +128,7 @@
 						$("#temp").html("The temperature could be described as coolish outside today. It might be worth taking a jumper with you!");
 					} else if (averageTemp >= 8 && averageTemp <= 12) {
 						todaysTemp = "Cool";
-						$("#temp").html("It's not quite cold, and not quite warm. Jeans, shirt and a thickish jumper");
+						$("#temp").html("It's not quite cold, and not quite warm. Jeans, shirt and a thickish jumper is probably the order of the day.");
 					} else if (averageTemp >= 4 && averageTemp <= 7) {
 						todaysTemp = "Cold";
 						$("#temp").html("It's cold out there, wear warm clothes today.");
