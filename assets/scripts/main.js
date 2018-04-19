@@ -15,7 +15,7 @@
 		var averageHumidity; 
 		var avergeWindSpeed; 
 		var todaysTemp;
-		var rain = [];
+	
 
 		
 
@@ -40,7 +40,6 @@
 							data.list[i].main.humidity,
 							data.list[i].weather[0].description,
 							data.list[i].wind.speed,
-							data.list[i].rain[0]
 						];
 					}
 
