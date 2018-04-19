@@ -16,6 +16,7 @@
 		var avergeWindSpeed; 
 		var todaysTemp;
 		var rain = [];
+
 		
 
 		 if (navigator.geolocation) {
@@ -23,7 +24,7 @@
 				URL = URL + "lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=metric" + "&APPID=" + weatherKey;
 				// URL = "/forecast.json";
 				$.getJSON(URL, function(data){
-					console.log(data);
+					console.table(data);
 
 					//Store the current city
 					currentCity = data.city.name;
@@ -43,10 +44,10 @@
 						];
 					}
 
-					//Get weather data for the next 24 hours only
+					//Get weather data for the next 12 hours only
 					i = 0;
 
-					for (i = 0; i < 8; i++) {
+					for (i = 0; i < 4; i++) {
 						weather24hoursJSON[i] = [
 							data.list[i].dt,
 							data.list[i].main.temp,
@@ -57,30 +58,29 @@
 						];
 					}
 
-					//Is it going to rain 
+					// //Is it going to rain 
 
-					i = 0;
+					// i = 0;
 
-					for (i = 0; i < 8; i++) {
-						rain[i] = [
-							data.list[i].rain[0]
-						];
-					}
+					// for (i = 0; i < 8; i++) {
+					// 	rain[i] = [
+					// 		data.list[i].rain[0]
+					// 	];
+					// }
 
-					if (rain > 0) {
-						rain = true;
-						$("#rain").html("It's going to rain today - take your umbrella and rain coat.");
-					} else {
-						$("#rain").html("Skies are dry, no need for an umbrella or your coat.");
-					}
-
+					// if (rain > 0) {
+					// 	rain = true;
+					// 	$("#rain").html("It's going to rain today - take your umbrella and rain coat.");
+					// } else {
+					// 	$("#rain").html("Skies are dry, no need for an umbrella or your coat.");
+					// }
 
 
 
 					//Work out average temperature
 					i = 0;
 					
-					for (i = 0; i < 8; i++) {
+					for (i = 0; i < 4; i++) {
 						temp24hoursJSON[i] = [
 							data.list[i].main.temp
 						];
@@ -91,7 +91,7 @@
 					//Work out average humidity
 					i = 0;
 					
-					for (i = 0; i < 8; i++) {
+					for (i = 0; i < 4; i++) {
 						humidity24hoursJSON[i] = [
 							data.list[i].main.humidity
 						];
@@ -103,7 +103,7 @@
 					//Work out average wind speed
 					i = 0;
 					
-					for (i = 0; i < 8; i++) {
+					for (i = 0; i < 4; i++) {
 						windspeed24hoursJSON[i] = [
 							data.list[i].wind.speed
 						];
@@ -152,18 +152,18 @@
 
 
 
-					console.log(d);
-					console.log(n);
-					console.log(x);
-					console.log(currentCity);
-					console.log(weatherJSON);
-					console.log(weather24hoursJSON);
-					console.log(temp24hoursJSON);
-					console.log(humidity24hoursJSON);
-					console.log(averageTemp);
-					console.log(averageHumidity);
-					console.log(averageWindSpeed);
-					console.log(todaysTemp);
+					console.table(d);
+					console.table(n);
+					console.table(x);
+					console.table(currentCity);
+					console.table(weatherJSON);
+					console.table(weather24hoursJSON);
+					console.table(temp24hoursJSON);
+					console.table(humidity24hoursJSON);
+					console.table(averageTemp);
+					console.table(averageHumidity);
+					console.table(averageWindSpeed);
+					console.table(todaysTemp);
 				});
 
 			});
@@ -173,10 +173,10 @@
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/serviceworker.js').then(function(registration) {
                     // Registration was successful
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    console.table('ServiceWorker registration successful with scope: ', registration.scope);
                 }, function(err) {
                     // registration failed :(
-                    console.log('ServiceWorker registration failed: ', err);
+                    console.table('ServiceWorker registration failed: ', err);
                 });
             });
         }
