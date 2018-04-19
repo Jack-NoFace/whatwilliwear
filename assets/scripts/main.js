@@ -84,7 +84,7 @@
 						];
 					}
 
-					averageTemp = (temp24hoursJSON[0][0] + temp24hoursJSON[1][0] + temp24hoursJSON[2][0] + temp24hoursJSON[3][0] + temp24hoursJSON[4][0] + temp24hoursJSON[5][0] + temp24hoursJSON[6][0] + temp24hoursJSON[7][0]) / 8;
+					averageTemp = (temp24hoursJSON[0][0] + temp24hoursJSON[1][0] + temp24hoursJSON[2][0] + temp24hoursJSON[3][0]) / 4;
 
 					//Work out average humidity
 					i = 0;
@@ -95,7 +95,7 @@
 						];
 					}
 
-					averageHumidity = (humidity24hoursJSON[0][0] + humidity24hoursJSON[1][0] + humidity24hoursJSON[2][0] + humidity24hoursJSON[3][0] + humidity24hoursJSON[4][0] + humidity24hoursJSON[5][0] + humidity24hoursJSON[6][0] + humidity24hoursJSON[7][0]) / 8;
+					averageHumidity = (humidity24hoursJSON[0][0] + humidity24hoursJSON[1][0] + humidity24hoursJSON[2][0] + humidity24hoursJSON[3][0]) / 4;
 					
 
 					//Work out average wind speed
@@ -107,7 +107,7 @@
 						];
 					}
 
-					averageWindSpeed = (windspeed24hoursJSON[0][0] + windspeed24hoursJSON[1][0] + windspeed24hoursJSON[2][0] + windspeed24hoursJSON[3][0] + windspeed24hoursJSON[4][0] + windspeed24hoursJSON[5][0] + windspeed24hoursJSON[6][0] + windspeed24hoursJSON[7][0]) / 8;
+					averageWindSpeed = (windspeed24hoursJSON[0][0] + windspeed24hoursJSON[1][0] + windspeed24hoursJSON[2][0] + windspeed24hoursJSON[3][0]) / 4;
 
 
 					//Set rules for temperature 
